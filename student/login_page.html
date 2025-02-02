@@ -1,1 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #007BFF, #6200b3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            border-radius: 20px;
+            
+        }
+        .login-container img {
+            margin-bottom: 20px;
+            width:100%;
 
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+            align-self: center;
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .login-container input[type="text"]:focus,
+        .login-container input[type="password"]:focus {
+            border-color: #007BFF;
+            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+        }
+        .login-container input[type="submit"] {
+            width: 70%;
+            padding: 12px;
+            margin: 10px auto;
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #007BFF, #0056b3);
+            color: white;
+            display: block;
+            
+        }
+        .login-container input[type="submit"]:hover {
+            background: linear-gradient(45deg, #0056b3, #007BFF);
+        }
+        .captcha {
+            
+        }
+        .captcha img {
+            margin-left: 10px;
+        }
+        .captcha-text{
+            text-align: center;
+            margin:10px 0;
+            font-weight: bold;
+            color: #333;
+            background-color: #f2f2f2;
+            padding: 10px;
+
+        }
+        .captchaText {
+            text-align: center;
+            font-size: 18px;
+            
+            margin-bottom: 10px;
+            
+        }
+        
+        .captcha-text button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .captcha-text button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="./bin/vit_logo_colored.png" alt="Logo" width="100">
+        <h2>Student Login</h2>
+        <form id="loginForm" action="/login" method="post" onsubmit="return validateCaptcha()">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <div class="captcha-text">          
+                <span id="captchaText"></span>
+                <button type="button" onclick="generateCaptcha()">Refresh</button>
+            </div>
+            
+            
+            <div class="captcha">
+                <label for="captcha">Captcha:&nbsp;</label>
+                <input type="text" id="captcha" name="captcha" size="15" required>
+                
+            </div>
+            
+            <input type="submit" value="Login">
+        </form>
+    </div>
+
+    <script>
+        function generateCaptcha() {
+            const captchaext = document.getElementById('captchaText');
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let captcha = '';
+            for (let i = 0; i < 6; i++) {
+                captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            captchaText.textContent = captcha;
+        }
+
+        function validateCaptcha() {
+            const captchaInput = document.getElementById('captcha').value;
+            const captchaText = document.getElementById('captchaText').textContent;
+            if (captchaInput !== captchaText) {
+                alert('Captcha does not match. Please try again.');
+                return false;
+            }
+            return true;
+        }
+
+        // Generate initial captcha
+        generateCaptcha();
+    </script>
+</body>
+</html>
