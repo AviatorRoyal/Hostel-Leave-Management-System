@@ -1,8 +1,84 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <title>VITCC Login</title>
-    </head>
-    <body>
-        
-    </body>
+<head>
+    <title>VITCC Hostel Authority Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+        .logo {
+            width: 80%;
+            max-width: 250px;
+            margin-bottom: 20px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .captcha-container {
+            margin: 10px 0;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+    </style>
+    <script>
+        function generateCaptcha() {
+            let a = Math.floor(Math.random() * 10);
+            let b = Math.floor(Math.random() * 10);
+            document.getElementById('captcha-question').innerText = `${a} + ${b} = ?`;
+            document.getElementById('captcha-expected').value = a + b;
+        }
+        function validateCaptcha(event) {
+            let expected = document.getElementById('captcha-expected').value;
+            let answer = document.getElementById('captcha-answer').value;
+            if (expected != answer) {
+                event.preventDefault();
+                alert('Captcha incorrect. Try again.');
+                generateCaptcha();
+            }
+        }
+        window.onload = generateCaptcha;
+    </script>
+</head>
+<body>
+    <div class="login-container">
+        <img src="./bin/vit_logo_colored.png" alt="VITCC Logo" class="logo">
+        <h2>Hostel Authority Login</h2>
+        <form action="dashboard.html" method="POST">
+            <input type="text" placeholder="Employee number" name="empno" required>
+            <input type="password" placeholder="Password" name="password" required>
+            <div class="captcha-container">
+                <p id="captcha-question"></p>
+                <input type="hidden" id="captcha-expected">
+                <input type="text" id="captcha-answer" placeholder="Enter answer" required>
+            </div>            <button type="submit">Login</button>
+        </form>
+    </div>
+</body>
 </html>
