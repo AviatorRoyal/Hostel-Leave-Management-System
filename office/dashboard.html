@@ -11,21 +11,55 @@
             flex-direction: column;
             height: 100vh;
         }
-        .navbar {
+        .header {
+            display: flex;
+            align-items: center;
             background: #007BFF;
             color: white;
-            padding: 15px;
-            display: flex;
-            justify-content: space-between;
+            padding: 10px;
+            justify-content: center;
+            position: relative;
         }
-        .navbar a {
+
+        .toggle-btn {
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            position: absolute;
+            left: 10px;
+        }
+
+        .logo {
+            height: 100px;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #007BFF;
+            color: white;
+            position: fixed;
+            left: -250px;
+            top: 100px;
+            transition: 0.3s;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px;
             color: white;
             text-decoration: none;
-            margin: 0 15px;
+        }
+        .sidebar a:hover {
+            background: #0056b3;
         }
         .content {
-            display: flex;
             flex: 1;
+            display: flex;
+            margin-left: 0;
+            transition: margin-left 0.3s;
+            width: 100%;
         }
         .left, .center, .right {
             padding: 20px;
@@ -45,19 +79,33 @@
             text-align: left;
         }
     </style>
+    <script>
+        function toggleNav() {
+            let sidebar = document.getElementById('sidebar');
+            let content = document.getElementById('content');
+            if (sidebar.style.left === '-250px') {
+                sidebar.style.left = '0';
+                content.style.marginLeft = '250px';
+            } else {
+                sidebar.style.left = '-250px';
+                content.style.marginLeft = '0';
+            }
+        }
+    </script>
 </head>
 <body>
-    <div class="navbar">
-        <span>Hostel Dashboard</span>
-        <div>
-            <a href="#">Profile</a>
-            <a href="#">Manage Students</a>
-            <a href="#">Scan QR</a>
-            <a href="#">Logs</a>
-            <a href="#">Logout</a>
-        </div>
+    <div class="header">
+        <button class="toggle-btn" onclick="toggleNav()">☰</button>
+        <img src="./bin/vit_logo_colored.png" alt="VITCC Logo" class="logo">
     </div>
-    <div class="content">
+    <div class="sidebar" id="sidebar">
+        <a href="#">Profile</a>
+        <a href="#">Manage Students</a>
+        <a href="#">Scan QR</a>
+        <a href="#">Logs</a>
+        <a href="./login.html">Logout</a>
+    </div>
+    <div class="content" id="content">
         <div class="left">
             <h2>Leave Requests</h2>
             <table>
