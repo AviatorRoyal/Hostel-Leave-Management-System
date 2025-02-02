@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hostel Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .navbar {
+            background: #007BFF;
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+        .content {
+            display: flex;
+            flex: 1;
+        }
+        .left, .center, .right {
+            padding: 20px;
+            flex: 1;
+            border: 1px solid #ccc;
+            background: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <span>Hostel Dashboard</span>
+        <div>
+            <a href="#">Profile</a>
+            <a href="#">Manage Students</a>
+            <a href="#">Scan QR</a>
+            <a href="#">Logs</a>
+            <a href="#">Logout</a>
+        </div>
+    </div>
+    <div class="content">
+        <div class="left">
+            <h2>Leave Requests</h2>
+            <table>
+                <tr><th>Student Name</th><th>Request Date</th><th>Status</th></tr>
+                <tr><td>John Doe</td><td>2025-02-01</td><td>Pending</td></tr>
+            </table>
+        </div>
+        <div class="center">
+            <h2>Approved Leaves</h2>
+            <table>
+                <tr><th>Student Name</th><th>Approval Date</th><th>Return Date</th></tr>
+                <tr><td>Jane Smith</td><td>2025-01-30</td><td>2025-02-05</td></tr>
+            </table>
+        </div>
+        <div class="right">
+            <h2>Active Leaves</h2>
+            <table>
+                <tr><th>Student Name</th><th>Leave Start</th><th>Expected Return</th></tr>
+                <tr><td>Michael Lee</td><td>2025-01-28</td><td>2025-02-03</td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
