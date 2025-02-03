@@ -180,7 +180,7 @@
                 const formContainer = document.getElementById('applyFormContainer');
                 formContainer.innerHTML = `
                     <h3>Apply for a Leave</h3>
-                    <form id="applyForm" onsubmit="submitMessage()">
+                    <form id="applyForm" onsubmit="submitMessage(); submitLeaveForm(event);">
                         <label for="LeaveType">Leave Type:</label>
                         
                         <select id="LeaveType" required onchange="showNightTeamOption()">
@@ -232,8 +232,27 @@
                     </form>
                 `;
             }
+            function submitLeaveForm(event) {
+                event.preventDefault();
+                let leaveType = document.getElementById('LeaveType').value;
+                
+                const submissionDate = new Date().toLocaleString();
+
+                const statusTable = document.getElementById('statusTable');
+                const newRow = document.createElement('div');
+                newRow.innerHTML = `
+                    <p><strong>Leave Type:</strong> ${leaveType}</p>
+                    <p><strong>Submission Date & Time:</strong> ${submissionDate}</p>
+                    <hr>
+                `;
+                statusTable.appendChild(newRow);
+
+                // Clear the form
+                document.getElementById('applyForm').reset();
+            }
             function submitMessage(){
                 alert("Leave Application Submitted Successfully");
+                
                 
             }
             
