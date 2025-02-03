@@ -101,7 +101,7 @@
     <div class="login-container">
         <img src="./bin/vit_logo_colored.png" alt="Logo" width="100">
         <h2 >Student Login</h2>
-        <form id="loginForm" action="studentDashboard.html" method="post" onsubmit="return validateCaptcha()">
+        <form id="loginForm" action="studentDashboard.html" method="post" onsubmit="return validateCaptcha();">
             <label for="username">Registeration Number:</label>
             <input type="text" id="username" name="username" required>
             
@@ -122,6 +122,9 @@
             
             <input type="submit"  value="Login">
         </form>
+        <footer>If You are Hostel Supervisor, Please follow the below link<br><br>
+          <a href="../office/login.html">Hostel Login</a>  
+        </footer>
     </div>
 
     <script>
@@ -134,17 +137,15 @@
             }
             captchaText.textContent = captcha;
         }
-
         function validateCaptcha() {
             const captchaInput = document.getElementById('captcha').value;
             const captchaText = document.getElementById('captchaText').textContent;
             if (captchaInput !== captchaText) {
-                alert('Captcha does not match. Please try again.');
-                generateCaptcha();
-                document.getElementById('captcha').value = '';
-                return false;
+            alert('Captcha does not match. Please try again.');
+            generateCaptcha();
+            document.getElementById('captcha').value = '';
+            return false;
             }
-            window.location.href = 'studentDashboard.html';
             return true;
         }
 
