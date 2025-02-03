@@ -14,6 +14,11 @@
             height: 100vh;
             
         }
+        h2{
+            text-align: center;
+            color: #339;
+            
+        }
         .login-container {
             background-color: #fff;
             padding: 20px;
@@ -76,14 +81,9 @@
             padding: 10px;
 
         }
-        .captchaText {
-            text-align: center;
-            font-size: 18px;
-            
-            margin-bottom: 10px;
-            
+        .captcha-text span {
+            margin-right: 10px;
         }
-        
         .captcha-text button {
             margin-left: 10px;
             padding: 5px 10px;
@@ -102,9 +102,9 @@
 <body>
     <div class="login-container">
         <img src="./bin/vit_logo_colored.png" alt="Logo" width="100">
-        <h2>Student Login</h2>
-        <form id="loginForm" action="/login" method="post" onsubmit="return validateCaptcha()">
-            <label for="username">Username:</label>
+        <h2 >Student Login</h2>
+        <form id="loginForm" action="studentDashboard.html" method="post" onsubmit="return validateCaptcha()">
+            <label for="username">Registeration Number:</label>
             <input type="text" id="username" name="username" required>
             
             <label for="password">Password:</label>
@@ -122,13 +122,13 @@
                 
             </div>
             
-            <input type="submit" value="Login">
+            <input type="submit"  value="Login">
         </form>
     </div>
 
     <script>
         function generateCaptcha() {
-            const captchaext = document.getElementById('captchaText');
+            const captchaText = document.getElementById('captchaText');
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
             let captcha = '';
             for (let i = 0; i < 6; i++) {
@@ -142,8 +142,11 @@
             const captchaText = document.getElementById('captchaText').textContent;
             if (captchaInput !== captchaText) {
                 alert('Captcha does not match. Please try again.');
+                generateCaptcha();
+                document.getElementById('captcha').value = '';
                 return false;
             }
+            window.location.href = 'studentDashboard.html';
             return true;
         }
 
