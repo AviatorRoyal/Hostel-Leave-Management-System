@@ -19,9 +19,7 @@
         }
 
 
-    .dashboard-container {
-        
-    }
+ 
     .logo {
             height: 100px;
             
@@ -104,7 +102,7 @@
                 <ul>
                     <li><a href="#profile">Profile</a></li>
                     <li><a href="#Leaves" onclick="showApplyForm(event)">Apply</a></li>
-                    <li><a href="#grades">History</a></li>
+                    <li><a href="#status">History</a></li>
                     <li><a href="#logout">Logout</a></li>
                 </ul>
             </nav>
@@ -119,9 +117,12 @@
                 <p>List of Types of Leaves.</p>
                 <div id="applyFormContainer"></div>
             </section>
-            <section id="grades">
-                <h2>Grades</h2>
-                <p>Grades and academic performance.</p>
+            <section id="status">
+                <h2>Leave Status</h2>
+                <p>status and academic performance.</p>
+                <div id="statusTable"></div>
+                    
+
             </section>
         </div>
         <script>
@@ -139,6 +140,7 @@
                             <option value="casual">Casual Leave</option>
                             <option value="emergency">Emergency Leave</option>
                             <option value="vacation">Vacation Leave</option>
+                            <option value="other">Other Leave</option>
                         </select>
 
                         <br><br>
@@ -161,10 +163,13 @@
                         <input type="time" id="endTime" required>
                         <br><br>
                         <input type="submit" value="Submit">
+                        <input type="hidden" id="submissionDateTime" name="submissionDateTime" value="new Date().toISOString();">
                     </form>
                 `;
             }
+
         </script>
     
 </body>
+
 </html>
