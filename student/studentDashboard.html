@@ -77,6 +77,8 @@
         background-color: aliceblue;
     }
 
+    
+
     .main {
         display: flex;
         flex: 1;
@@ -98,8 +100,10 @@
     }
 
     section h2 {
-        font-size: 20px;
+        font:bolder xx-large 'Times New Roman';
         margin-bottom: 10px;
+        color: rgb(187, 255, 71);
+        text-align: center;
     }
 
     input[type="text"],
@@ -136,12 +140,12 @@
         </figure>
             
         <div class="header">
-            <h1>Welcome, [Student Type]</h1>
+            <h1>Welcome, [Student Name]</h1>
             <nav>
                 <ul>
                     <li><a href="#profile">Profile</a></li>
                     <li><a href="#Leaves" onclick="showApplyForm(event)">Apply</a></li>
-                    <li><a href="#status">History</a></li>
+                    <li><a href="#status" onclick="showStatusTable();">History</a></li>
                     <li><a href="./login_page.html">Logout</a></li>
                 </ul>
             </nav>
@@ -159,7 +163,7 @@
             <section id="status">
                 <h2>Leave Status</h2>
                 
-                <div id="statusTable"></div>
+                <div id="statusTable" class="hidden"></div>
                     
 
             </section>
@@ -173,6 +177,11 @@
                 else{
                     document.querySelector('.hidden').style.display = 'none';
                 }    
+            }
+
+            function showStatusTable(){
+                const statusTable = document.getElementById('statusTable');
+                statusTable.classList.toggle('hidden');
             }
 
             function showApplyForm(event) {
