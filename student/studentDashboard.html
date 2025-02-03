@@ -2,11 +2,169 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Dashboard</title>
+        <meta Type="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Student Dashboard</title>
+    <style>
+            body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            margin: 0 20px;
+            padding: 0;
+            /* max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px; */
+        }
+
+
+    .dashboard-container {
+        
+    }
+    .logo {
+            height: 100px;
+            
+            
+            display: block;
+            margin: 0 auto 20px;
+    }
+    figure{
+        background: linear-gradient(45deg, #037ef8, #37cc29);
+        margin:0px -20px;
+    }
+
+    .header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .header h1 {
+        margin: 0;
+        font-size: 24px;
+    }
+
+    nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    nav ul li {
+        margin-left: 20px;
+    }
+
+    nav ul li a {
+        text-decoration: none;
+        color: #007BFF;
+        font-weight: bold;
+    }
+
+    nav ul li a:hover {
+        text-decoration: underline;
+    }
+
+    .main {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+        
+        padding: 20px;
+    }
+
+    section {
+        
+        flex: 1;
+        margin: 20px 10px;
+        background-color: white;
+        padding: 20px;
+        border-radius: 0px;
+        box-shadow: 10px 10px 10px rgba(95, 208, 9, 0.1);
+        justify-content: space-between;
+    }
+
+    section h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+</style>
 </head>
 <body>
-    
+        <figure >
+            <img class="logo" src="./bin/vit_logo_colored.png" alt="VITCC Logo">
+        </figure>
+            
+        <div class="header">
+            <h1>Welcome, [Student Type]</h1>
+            <nav>
+                <ul>
+                    <li><a href="#profile">Profile</a></li>
+                    <li><a href="#Leaves" onclick="showApplyForm(event)">Apply</a></li>
+                    <li><a href="#grades">History</a></li>
+                    <li><a href="#logout">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="main">
+            <section id="profile">
+                <h2>Profile</h2>
+                <p>Student details and information.</p>
+            </section>
+            <section id="Leaves">
+                <h2>Leaves</h2>
+                <p>List of Types of Leaves.</p>
+                <div id="applyFormContainer"></div>
+            </section>
+            <section id="grades">
+                <h2>Grades</h2>
+                <p>Grades and academic performance.</p>
+            </section>
+        </div>
+        <script>
+            function showApplyForm(event) {
+                event.preventDefault();
+                const formContainer = document.getElementById('applyFormContainer');
+                formContainer.innerHTML = `
+                    <h3>Apply for a Leave</h3>
+                    <form id="applyForm">
+                        <label for="LeaveType">Leave Type:</label>
+                        
+                        <select id="LeaveType" required>
+                            <option value="" disabled selected>Select Leave Type</option>
+                            <option value="sick">Sick Leave</option>
+                            <option value="casual">Casual Leave</option>
+                            <option value="emergency">Emergency Leave</option>
+                            <option value="vacation">Vacation Leave</option>
+                        </select>
+
+                        <br><br>
+                        <label for="LeaveReason">Leave Reason:</label>
+                        <br>
+                        
+                        <textarea id="LeaveReason" rows="4" cols="50" placeholder="Enter your reason for leave" required></textarea>
+                        <br><br>
+                        
+                        <label for="startDate">Start Date:</label>
+                        <input type="date" id="startDate" required>
+                        
+                        <label for="startTime">Start Time:</label>
+                        <input type="time" id="startTime" required>
+                        <br><br>
+                        <label for="endDate">End Date:</label>
+                        <input type="date" id="endDate" required>
+                        
+                        &nbsp;<label for="endTime">End Time:</label>&nbsp;&nbsp;
+                        <input type="time" id="endTime" required>
+                        <br><br>
+                        <input type="submit" value="Submit">
+                    </form>
+                `;
+            }
+        </script>
     
 </body>
 </html>
