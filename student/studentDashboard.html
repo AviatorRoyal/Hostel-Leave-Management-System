@@ -67,6 +67,9 @@
 
     nav ul li a:hover {
         text-decoration: underline;
+        text-transform: uppercase;
+        font-size: large;
+        color:#e9510b; ;
     }
 
     .main {
@@ -92,6 +95,14 @@
     section h2 {
         font-size: 20px;
         margin-bottom: 10px;
+    }
+    button{
+        background: rgba(21, 222, 27, 0.733);
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
     }
 </style>
 </head>
@@ -167,7 +178,7 @@
                         <input type="time" id="endTime" required>
                         <br><br>
                         <input type="hidden" id="submissionDateTime" name="submissionDateTime" value=new Date().toISOString()>
-                        <input type="submit" value="Apply" >
+                        <button type="submit">APPLY</button>
                       
                     </form>
                 `;
