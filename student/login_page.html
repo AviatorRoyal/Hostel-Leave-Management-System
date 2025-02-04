@@ -27,7 +27,15 @@
             width: 500px;
             border-radius: 20px;
             
+            
+            
         }
+        /* .loginform {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        } */
+
         .login-container img {
             margin-bottom: 20px;
             width:100%;
@@ -35,7 +43,7 @@
         }
         .login-container h2 {
             margin-bottom: 20px;
-            align-self: center;
+           
         }
         .login-container input[type="text"],
         .login-container input[type="password"] {
@@ -44,32 +52,32 @@
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            box-shadow: inset 1px 1px 3px 2px rgba(0, 0, 0, 0.6), inset -1px -1px 3px 2px rgba(0, 0, 0, 0.6);
             transition: border-color 0.3s, box-shadow 0.3s;
         }
         .login-container input[type="text"]:focus,
         .login-container input[type="password"]:focus {
-            border-color: #007BFF;
-            box-shadow: 0 0 8px rgba(0, 123, 255, 0.2);
+            border-color: #293e55;
+            box-shadow: 0 0 18px rgba(0, 123, 255, 0.2);
         }
         .login-container input[type="submit"] {
             width: 70%;
             padding: 12px;
-            margin: 10px auto;
+            
             border: none;
             border-radius: 5px;
-            background: linear-gradient(45deg, #007BFF, #0056b3);
+            background: linear-gradient(45deg, #d400ff, #00b398);
             color: white;
             display: block;
+            margin: 10px auto;
+            
             
         }
         .login-container input[type="submit"]:hover {
             background: linear-gradient(45deg, #0056b3, #007BFF);
         }
         
-        .captcha img {
-            margin-left: 10px;
-        }
+        
         .captcha-text{
             text-align: center;
             margin:10px 0;
@@ -79,28 +87,33 @@
             padding: 10px;
 
         }
-        .captcha-text span {
-            margin-right: 10px;
-        }
+        
         .captcha-text button {
-            margin-left: 10px;
+            margin-left: 20px;;
             padding: 5px 10px;
             border: none;
             border-radius: 5px;
-            background-color: #007BFF;
+            background-color: #1388d1;
             color: white;
             cursor: pointer;
             transition: background-color 0.3s;
         }
         .captcha-text button:hover {
-            background-color: #0056b3;
+            background-color: #410be3;
         }
+
+        .login-container footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #333;
+        }   
     </style>
 </head>
 <body>
     <div class="login-container">
         <img src="./bin/vit_logo_colored.png" alt="Logo" width="100">
         <h2 >Student Login</h2>
+
         <form id="loginForm" action="studentDashboard.html" method="post" onsubmit="return validateCaptcha();">
             <label for="username">Registeration Number:</label>
             <input type="text" id="username" name="username" required>
@@ -128,7 +141,9 @@
     </div>
 
     <script>
+
         function generateCaptcha() {
+            // object for captcha generator holder
             const captchaText = document.getElementById('captchaText');
             const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
             let captcha = '';
@@ -137,8 +152,12 @@
             }
             captchaText.textContent = captcha;
         }
+
+
         function validateCaptcha() {
+            
             const captchaInput = document.getElementById('captcha').value;
+            
             const captchaText = document.getElementById('captchaText').textContent;
             if (captchaInput !== captchaText) {
             alert('Captcha does not match. Please try again.');
