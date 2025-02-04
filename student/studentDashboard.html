@@ -167,20 +167,7 @@
             </section>
         </div>
         <script>
-            function showNightTeamOption(){
-                let leaveType = document.getElementById('LeaveType').value;
-                if(leaveType === "Night Pass"){
-                    document.querySelector('.hidden').style.display = 'block';
-                }
-                else{
-                    document.querySelector('.hidden').style.display = 'none';
-                }    
-            }
-
-            function showStatusTable(){
-                const statusTable = document.getElementById('statusTable');
-                statusTable.classList.toggle('hidden');
-            }
+            
 
             function showApplyForm(event) {
                 event.preventDefault();
@@ -261,6 +248,20 @@
                 alert("Leave Application Submitted Successfully");
                 
                 
+            }
+            function showNightTeamOption(){
+                let leaveType = document.getElementById('LeaveType').value;
+                if(leaveType === "Night Pass"){
+                    document.querySelector('.hidden').style.display = 'block';
+                }
+                else{
+                    document.querySelector('.hidden').style.display = 'none';
+                }    
+            }
+
+            function showStatusTable(){
+                const statusTable = document.getElementById('statusTable');
+                statusTable.classList.toggle('hidden');
             }
             
 
