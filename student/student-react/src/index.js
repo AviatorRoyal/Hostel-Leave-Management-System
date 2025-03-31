@@ -5,7 +5,7 @@ import './index.css';
 import reportWebVitals from './reportWebVitals';
 import LoginPage from './components/student/LoginPage';
 import OfficeLogin from "./components/office/officeLogin";
-import Dashboard from './components/office/officeDashboard';
+import OfficeDashboard from "./components/office/officeDashboard";
 import StudentDashboard from './components/student/studentDashboard';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,7 +16,7 @@ root.render(
       <Routes>
         <Route path="/" element={<LoginPage />} />
         <Route path="/office/officeLogin" element={<OfficeLogin />} />
-        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        <Route path="/officeDashboard" element={<OfficeDashboard />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
       </Routes>
     </Router>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./officeLogin.css"; // Create a separate CSS file for styles
 import logo from "../../bin/vit_logo_colored.png";
+import { useNavigate } from "react-router-dom";
 
 class OfficeLogin extends React.Component {
   constructor(props) {
@@ -23,6 +24,13 @@ class OfficeLogin extends React.Component {
       event.preventDefault();
       alert("Captcha incorrect. Try again.");
       this.generateCaptcha(); // Generate a new captcha
+      return false;
+    }
+    else{
+        alert("Login successful!");
+        // window.location.href = "/officeDashboard.html"; // Redirect to the dashboard
+        this.props.navigate("/officeDashboard");
+        
     }
   };
 
@@ -36,18 +44,25 @@ class OfficeLogin extends React.Component {
       <div className="login-container">
         <img src={logo} alt="VITCC Logo" className="logo" />
         <h2>Hostel Authority Login</h2>
-        <form action="dashboard.html" method="POST" onSubmit={this.validateCaptcha}>
+        <form onSubmit={this.validateCaptcha}>
           <input type="text" placeholder="Employee number" name="empno" required />
           <input type="password" placeholder="Password" name="password" required />
           <div className="captcha-container">
             <p id="captcha-question"></p>
             <input type="text" id="captcha-answer" placeholder="Enter answer" required />
           </div>
-          <button type="submit">Login</button>
+          <input type="submit" value="Login"/>
         </form>
       </div>
     );
   }
 }
 
-export default OfficeLogin;
+// Wrap the component with `useNavigate` to pass the `navigate` prop
+const OfficeLoginWithNavigate = (props) => {
+    const navigate = useNavigate();
+    return <OfficeLogin {...props} navigate={navigate} />;
+  };
+  
+  export default OfficeLoginWithNavigate;
+//export default OfficeLogin;

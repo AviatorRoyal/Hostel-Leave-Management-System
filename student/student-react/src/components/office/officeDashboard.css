@@ -5,18 +5,21 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
-}
-.header {
+  }
+  
+  .header {
     display: flex;
     align-items: center;
-    background: #007BFF;
+    background: #007bff;
+    height: 150px;
+    width: 100%;
     color: white;
     padding: 10px;
     justify-content: center;
     position: relative;
-}
-
-.toggle-btn {
+  }
+  
+  .toggle-btn {
     font-size: 30px;
     cursor: pointer;
     background: none;
@@ -24,52 +27,67 @@ body {
     color: white;
     position: absolute;
     left: 10px;
-}
-
-.logo {
+  }
+  
+  .logo {
     height: 100px;
-}
-.sidebar {
+    position: relative;
+    margin-right: 50%;
+  }
+  
+  .sidebar {
     width: 250px;
     height: 100vh;
-    background: #2a91ff;
+    background: #007bff;
     color: white;
     position: fixed;
     left: -250px;
-    top: 120px;
+    top: 0;
     transition: 0.3s;
     padding-top: 20px;
-}
-.sidebar a {
+  }
+  
+  .sidebar a {
     display: block;
     padding: 15px;
     color: white;
     text-decoration: none;
-}
-.sidebar a:hover {
+  }
+  
+  .sidebar a:hover {
     background: #0056b3;
-}
-.content {
+  }
+  
+  .content {
     flex: 1;
     display: flex;
     margin-left: 0;
     transition: margin-left 0.3s;
     width: 100%;
-}
-.left, .center, .right {
+  }
+  
+  .left,
+  .center,
+  .right {
     padding: 20px;
     flex: 1;
     border: 1px solid #ccc;
     background: #f4f4f4;
-}
-table {
+  }
+  
+  table {
     width: 100%;
     border-collapse: collapse;
-}
-table, th, td {
+  }
+  
+  table,
+  th,
+  td {
     border: 1px solid black;
-}
-th, td {
+  }
+  
+  th,
+  td {
     padding: 10px;
     text-align: left;
-}
+  }
