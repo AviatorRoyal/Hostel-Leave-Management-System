@@ -84,7 +84,7 @@ class LoginPage extends React.Component {
           <br />
           <br />
           {/* <a href="../office/login.html">Hostel Login</a> */}
-          <Link to="../officeLogin">Hostel Login</Link>
+          <Link to="/office/officeLogin">Hostel Login</Link>
         </footer>
       </div>
     );
