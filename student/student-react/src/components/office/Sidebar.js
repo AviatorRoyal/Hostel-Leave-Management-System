@@ -11,11 +11,11 @@ const Sidebar = () => {
             position: "fixed",
             paddingTop: "20px"
         }}>
-            <Link to="/profile" style={styles.link}>Profile</Link>
-            <Link to="/manage-students" style={styles.link}>Manage Students</Link>
-            <Link to="/scan-qr" style={styles.link}>Scan QR</Link>
-            <Link to="/logs" style={styles.link}>Logs</Link>
-            <Link to="/logout" style={styles.link}>Logout</Link>
+            <Link to="/office/profile" style={styles.link}>Profile</Link>
+            <Link to="/office/manage-students" style={styles.link}>Manage Students</Link>
+            <Link to="/office/scan-qr" style={styles.link}>Scan QR</Link>
+            <Link to="/office/logs" style={styles.link}>Logs</Link>
+            <Link to="/office/logout" style={styles.link}>Logout</Link>
         </div>
     );
 };

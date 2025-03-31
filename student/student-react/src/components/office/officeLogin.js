@@ -39,7 +39,7 @@ class OfficeLogin extends React.Component {
     }
 
     alert("Login successful!");
-    this.props.navigate("/officeDashboard");
+    this.props.navigate("/office/*");
   };
 
   // Generate captcha when the component is mounted
@@ -70,7 +70,7 @@ class OfficeLogin extends React.Component {
           <br />
           <br />
           {/* <a href="../office/login.html">Hostel Login</a> */}
-          <Link to="/student/LoginPage">Student Login</Link>
+          <Link to="/">Student Login</Link>
           </footer>
         </center>
       </div>
