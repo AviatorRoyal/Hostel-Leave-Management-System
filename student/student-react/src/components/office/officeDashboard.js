@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Dashboard.css'; // Create a separate CSS file for styles
-import vitLogo from './bin/vit_logo_colored.png';
+import vitLogo from '../../bin/vit_logo_colored.png';
 
 const Dashboard = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
