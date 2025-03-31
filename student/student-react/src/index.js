@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import LoginPage from './components/student/LoginPage';
-import Dashboard from './Dashboard';  // Create this component
-import StudentDashboard from './StudentDashboard';  // Create this component
+import Dashboard from './components/office/officeDashboard';  // Create this component
+import StudentDashboard from './components/student/studentDashboard';  // Create this component
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
