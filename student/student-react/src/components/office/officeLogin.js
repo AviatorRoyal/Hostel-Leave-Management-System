@@ -42,17 +42,19 @@ class OfficeLogin extends React.Component {
   render() {
     return (
       <div className="login-container">
-        <img src={logo} alt="VITCC Logo" className="logo" />
-        <h2>Hostel Authority Login</h2>
-        <form onSubmit={this.validateCaptcha}>
-          <input type="text" placeholder="Employee number" name="empno" required />
-          <input type="password" placeholder="Password" name="password" required />
-          <div className="captcha-container">
-            <p id="captcha-question"></p>
-            <input type="text" id="captcha-answer" placeholder="Enter answer" required />
-          </div>
-          <input type="submit" value="Login"/>
-        </form>
+        <center>
+          <img src={logo} alt="VITCC Logo" className="logo" />
+          <h2>Hostel Authority Login</h2>
+          <form onSubmit={this.validateCaptcha}>
+            <input type="text" placeholder="Employee number" name="empno" required className="input-field" />
+            <input type="password" placeholder="Password" name="password" required className="input-field" />
+            <div className="captcha-container">
+              <p id="captcha-question" className="captcha-text"></p>
+              <input type="text" id="captcha-answer" placeholder="Enter answer" required className="input-field" />
+            </div>
+            <input type="submit" value="Login" className="submit-button" />
+          </form>
+        </center>
       </div>
     );
   }
