@@ -1,68 +1,183 @@
-import React, { useState } from 'react';
-import './officeDashboard.css'; // Assuming the CSS is in the same folder
-import vitLogo from '../../bin/vit_logo_colored.png';
+import React, { useState } from "react";
 
-const OfficeDashboard = () => {
+const HostelDashboard = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
-    const toggleNav = () => {
-        setSidebarOpen(!sidebarOpen); // Toggle the sidebar state
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+    };
+
+    const styles = {
+        body: {
+            margin: 0,
+            padding: 0,
+            fontFamily: "Arial, sans-serif",
+            height: "100vh",
+            display: "flex",
+            flexDirection: "column",
+            overflowX: "hidden",
+        },
+        header: {
+            marginLeft: "-10px",
+            display: "flex",
+            alignItems: "center",
+            background: "#007BFF",
+            height: "100px",
+            width: "100%",
+            color: "white",
+            padding: "10px",
+            justifyContent: "center",
+            position: "relative",
+        },
+        toggleBtn: {
+            fontSize: "30px",
+            cursor: "pointer",
+            background: "none",
+            border: "none",
+            color: "white",
+            position: "absolute",
+            left: "10px",
+        },
+        logo: {
+            height: "80px",
+            marginLeft: "10px",
+        },
+        sidebar: {
+            width: "250px",
+            height: "100vh",
+            background: "#007BFF",
+            color: "white",
+            position: "fixed",
+            left: sidebarOpen ? "0" : "-250px",
+            top: "100px",
+            transition: "left 0.3s ease-in-out",
+            paddingTop: "20px",
+        },
+        sidebarLink: {
+            display: "block",
+            padding: "15px",
+            color: "white",
+            textDecoration: "none",
+        },
+        sidebarLinkHover: {
+            background: "#0056b3",
+        },
+        content: {
+            flex: 1,
+            display: "flex",
+            transition: "margin-left 0.3s ease-in-out",
+            width: "100%",
+            marginLeft: sidebarOpen ? "250px" : "0",
+            padding: "20px",
+            boxSizing: "border-box",
+        },
+        panel: {
+            padding: "20px",
+            flex: 1,
+            border: "1px solid #ccc",
+            background: "#f4f4f4",
+            margin: "10px",
+        },
+        table: {
+            width: "100%",
+            borderCollapse: "collapse",
+            marginTop: "10px",
+        },
+        thTd: {
+            border: "1px solid black",
+            padding: "10px",
+            textAlign: "left",
+        },
+        th: {
+            background: "#007BFF",
+            color: "white",
+        },
     };
 
     return (
-        <div className="dashboard-container">
-            <header className="header">
-                <button className="toggle-btn" onClick={toggleNav}>☰</button>
-                <img src={vitLogo} alt="VITCC Logo" className="logo" />
-            </header>
-            
-            <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-                <a href="#">Profile</a>
-                <a href="#">Manage Students</a>
-                <a href="#">Scan QR</a>
-                <a href="#">Logs</a>
-                <a href="./login.html">Logout</a>
-            </aside>
-            
-            <main className={`content ${sidebarOpen ? 'shifted' : ''}`}>
-                <section className="left">
+        <div style={styles.body}>
+            {/* Header */}
+            <div style={styles.header}>
+                <button style={styles.toggleBtn} onClick={toggleSidebar}>☰</button>
+                <img src="./vit_logo_colored.png" alt="VITCC Logo" style={styles.logo} />
+            </div>
+
+            {/* Sidebar */}
+            <div style={styles.sidebar}>
+                <a href="#" style={styles.sidebarLink}>Profile</a>
+                <a href="#" style={styles.sidebarLink}>Manage Students</a>
+                <a href="#" style={styles.sidebarLink}>Scan QR</a>
+                <a href="#" style={styles.sidebarLink}>Logs</a>
+                <a href="./login.html" style={styles.sidebarLink}>Logout</a>
+            </div>
+
+            {/* Main Content */}
+            <div style={styles.content}>
+                {/* Left Panel */}
+                <div style={styles.panel}>
                     <h2>Leave Requests</h2>
-                    <table>
+                    <table style={styles.table}>
                         <thead>
-                            <tr><th>Leave ID</th><th>Type</th><th>Registration No</th><th>Name</th><th>Date Uploaded</th><th>Attachments</th></tr>
+                            <tr>
+                                <th style={styles.thTd}>Student Name</th>
+                                <th style={styles.thTd}>Request Date</th>
+                                <th style={styles.thTd}>Status</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td>001</td><td>Library</td><td>22BCE1001</td><td>Ramanuj Agarwal</td><td>2025-02-01</td><td><a href="">View</a></td></tr>
+                            <tr>
+                                <td style={styles.thTd}>John Doe</td>
+                                <td style={styles.thTd}>2025-02-01</td>
+                                <td style={styles.thTd}>Pending</td>
+                            </tr>
                         </tbody>
                     </table>
-                </section>
-                
-                <section className="center">
+                </div>
+
+                {/* Center Panel */}
+                <div style={styles.panel}>
                     <h2>Approved Leaves</h2>
-                    <table>
+                    <table style={styles.table}>
                         <thead>
-                            <tr><th>Leave ID</th><th>Type</th><th>Registration No</th><th>Name</th><th>Date Uploaded</th><th>Attachments</th></tr>
+                            <tr>
+                                <th style={styles.thTd}>Student Name</th>
+                                <th style={styles.thTd}>Approval Date</th>
+                                <th style={styles.thTd}>Return Date</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td>002</td><td>Garage</td><td>22BCE1002</td><td>Om</td><td>2025-01-30</td><td><a href="#">View</a></td></tr>
+                            <tr>
+                                <td style={styles.thTd}>Jane Smith</td>
+                                <td style={styles.thTd}>2025-01-30</td>
+                                <td style={styles.thTd}>2025-02-05</td>
+                            </tr>
                         </tbody>
                     </table>
-                </section>
-                
-                <section className="right">
+                </div>
+
+                {/* Right Panel */}
+                <div style={styles.panel}>
                     <h2>Active Leaves</h2>
-                    <table>
+                    <table style={styles.table}>
                         <thead>
-                            <tr><th>Leave ID</th><th>Type</th><th>Registration No</th><th>Name</th><th>Date Uploaded</th><th>Attachments</th></tr>
+                            <tr>
+                                <th style={styles.thTd}>Student Name</th>
+                                <th style={styles.thTd}>Leave Start</th>
+                                <th style={styles.thTd}>Expected Return</th>
+                            </tr>
                         </thead>
                         <tbody>
-                            <tr><td>003</td><td>Lab</td><td>22BCE1003</td><td>Navneet</td><td>2025-01-28</td><td><a href="#">View</a></td></tr>
+                            <tr>
+                                <td style={styles.thTd}>Michael Lee</td>
+                                <td style={styles.thTd}>2025-01-28</td>
+                                <td style={styles.thTd}>2025-02-03</td>
+                            </tr>
                         </tbody>
                     </table>
-                </section>
-            </main>
+                </div>
+            </div>
         </div>
     );
 };
 
-export default OfficeDashboard;
+export default HostelDashboard;

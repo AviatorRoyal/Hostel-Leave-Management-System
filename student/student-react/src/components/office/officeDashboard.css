@@ -1,21 +1,21 @@
-/* Ensure no stretch on the body element */
-body {
-  font-family: Arial, sans-serif;
+/* General Styles */
+body, html {
   margin: 0;
   padding: 0;
+  font-family: Arial, sans-serif;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  overflow: hidden; /* Prevent overflow */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 
-/* Header styling */
+/* Header */
 .header {
   display: flex;
   align-items: center;
-  background: #007bff;
-  height: 180px; /* Reduced height for better proportion */
-  width: 100%;
+  background: #007BFF;
+  height: 100px; /* Reduced from 150px */
+  width: 100%; /* Fix: Was 200%, now set to full viewport width */
   color: white;
   padding: 10px;
   justify-content: center;
@@ -30,32 +30,24 @@ body {
   color: white;
   position: absolute;
   left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
 }
 
 .logo {
-  height: 60px;
-  margin-left: auto;
-  margin-right: auto;
+  height: 80px; /* Adjusted for better proportions */
+  margin-left: 10px;
 }
 
-/* Sidebar styles */
+/* Sidebar */
 .sidebar {
   width: 250px;
   height: 100vh;
-  background: #007bff;
+  background: #007BFF;
   color: white;
   position: fixed;
-  top: 0;
-  left: -250px; /* Sidebar starts hidden offscreen */
-  transition: left 0.3s ease-in-out; /* Smooth transition */
+  left: -250px;
+  top: 100px; /* Same as header height */
+  transition: left 0.3s ease-in-out;
   padding-top: 20px;
-  z-index: 10; /* Make sure sidebar is above content */
-}
-
-.sidebar.open {
-  left: 0; /* Slide in the sidebar */
 }
 
 .sidebar a {
@@ -69,59 +61,59 @@ body {
   background: #0056b3;
 }
 
-/* Main content area */
+.sidebar.open {
+  left: 0;
+}
+
+/* Main Content */
 .content {
   flex: 1;
   display: flex;
-  margin-left: 0;
-  transition: margin-left 0.3s ease-in-out; /* Smooth shift */
-  padding: 20px;
+  transition: margin-left 0.3s ease-in-out;
   width: 100%;
+  margin-left: 0;
+  padding: 20px; /* Added spacing */
+  box-sizing: border-box;
 }
 
 .content.shifted {
-  margin-left: 250px; /* Shift content when sidebar is open */
+  margin-left: 250px;
 }
 
-.left,
-.center,
-.right {
+/* Panel Styling */
+.panel {
   padding: 20px;
   flex: 1;
   border: 1px solid #ccc;
   background: #f4f4f4;
-  margin-right: 10px;
+  margin: 10px;
 }
 
+/* Table Styles */
 table {
   width: 100%;
   border-collapse: collapse;
+  margin-top: 10px;
 }
 
-table,
-th,
-td {
-  border: 1px solid #ccc;
-}
-
-th,
-td {
+th, td {
+  border: 1px solid black;
   padding: 10px;
   text-align: left;
-  word-wrap: break-word;
 }
 
-thead {
-  background-color: #f0f0f0;
+th {
+  background: #007BFF;
+  color: white;
 }
 
-/* Mobile responsiveness */
+/* Responsive Fix */
 @media screen and (max-width: 768px) {
-  .sidebar {
-    width: 200px;
+  .content {
+      flex-direction: column;
   }
-
-  .content.shifted {
-    margin-left: 200px;
+  .panel {
+      flex: none;
+      width: 100%;
   }
 }
