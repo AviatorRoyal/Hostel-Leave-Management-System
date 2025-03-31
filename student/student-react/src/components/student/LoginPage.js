@@ -32,6 +32,19 @@ class LoginPage extends React.Component {
       return false;
     }
 
+    const IdPattern = /^[2][0-4](BCE|ECE|CSE|IT|EEE|BRS|BAI|MCE|MEE|MTE|MCE|MEE|MTE)[1-9][0-9]{3}$/;
+    const passwordPattern = /^(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,}$/;
+    var password = document.getElementById("password").value;
+    var username = document.getElementById("username").value;
+    if (!username.match(IdPattern)) {
+      alert("Invalid Registration Number. Please try again.");
+      return false;
+    }
+
+    if (!password.match(passwordPattern)) {
+      alert("Invalid Password. Password must be at least 8 characters long and contain at least one special character.");
+      return false;
+  }
     // Navigate to the student dashboard
     alert("Login successful!");
     window.location.href = "/studentDashboard.html";
@@ -84,7 +97,7 @@ class LoginPage extends React.Component {
           <br />
           <br />
           {/* <a href="../office/login.html">Hostel Login</a> */}
-          <Link to="/office/officeLogin">Hostel Login</Link>
+          <Link to="/office/officeLogin">Office Login</Link>
         </footer>
       </div>
     );

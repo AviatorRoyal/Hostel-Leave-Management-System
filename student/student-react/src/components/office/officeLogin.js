@@ -3,6 +3,7 @@ import "./officeLogin.css"; // Ensure your CSS file includes the updated styles
 import logo from "../../bin/vit_logo_colored.png";
 import { useNavigate } from "react-router-dom";
 import { FiRefreshCcw } from "react-icons/fi"; // Import refresh icon
+import {Link} from 'react-router-dom'; // Import Link for navigation
 
 class OfficeLogin extends React.Component {
   constructor(props) {
@@ -55,6 +56,13 @@ class OfficeLogin extends React.Component {
             <input type="text" id="captcha-answer" placeholder="Enter answer" required className="input-field" />
             <input type="submit" value="Login" className="submit-button" />
           </form>
+          <footer className="footer">
+          If You are Student, Please follow the below link
+          <br />
+          <br />
+          {/* <a href="../office/login.html">Hostel Login</a> */}
+          <Link to="/student/LoginPage">Student Login</Link>
+          </footer>
         </center>
       </div>
     );

@@ -7,7 +7,7 @@ import LoginPage from './components/student/LoginPage';
 import OfficeLogin from "./components/office/officeLogin";
 import OfficeDashboard from "./components/office/officeDashboard";
 import StudentDashboard from './components/student/studentDashboard';
-
+import StudentLogin from './components/student/LoginPage';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
@@ -17,6 +17,7 @@ root.render(
         <Route path="/" element={<LoginPage />} />
         <Route path="/office/officeLogin" element={<OfficeLogin />} />
         <Route path="/officeDashboard" element={<OfficeDashboard />} />
+        <Route path="/student/LoginPage" element={<StudentLogin />} />
         <Route path="/student-dashboard" element={<StudentDashboard />} />
       </Routes>
     </Router>
