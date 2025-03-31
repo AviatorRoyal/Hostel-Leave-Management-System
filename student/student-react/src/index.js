@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import LoginPage from './LoginPage';
+import LoginPage from './components/student/LoginPage';
 import Dashboard from './Dashboard';  // Create this component
 import StudentDashboard from './StudentDashboard';  // Create this component
 

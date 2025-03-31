@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./LoginPage.module.css";
-import logo from "./bin/vit_logo_colored.png";
+import logo from "../../bin/vit_logo_colored.png";
 
 class LoginPage extends React.Component {
   constructor(props) {
