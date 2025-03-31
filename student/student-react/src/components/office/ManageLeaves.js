@@ -19,7 +19,7 @@ const ManageLeaves = () => {
             border: "1px solid black",
             padding: "10px",
             textAlign: "left",
-            fontSize: "14px",
+            fontSize: "px",
         },
         th: {
             background: "#007BFF",

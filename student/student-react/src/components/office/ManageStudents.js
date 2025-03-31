@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BackButton from "./BackButton"; // Import BackButton
 
 const ManageStudents = () => {
     const [students, setStudents] = useState([]);
@@ -39,8 +40,11 @@ const ManageStudents = () => {
         <div>
             <h2>Manage Students</h2>
 
-            {/* Add Student Form */}
             <form onSubmit={handleAddStudent}>
+            <div>
+                <BackButton />
+                <h2>Manage Students</h2>
+            </div>
                 <div>
                     <label>
                         Name:

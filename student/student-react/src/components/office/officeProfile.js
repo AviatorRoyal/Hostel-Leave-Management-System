@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import BackButton from "./BackButton"; // Import BackButton
 
 const EmployeeProfile = () => {
   // State to store employee details
@@ -143,6 +144,8 @@ const EmployeeProfile = () => {
             Save
           </button>
         ) : (
+          
+
           <button
             onClick={() => setIsEditing(true)}
             style={{ ...styles.button, ...styles.editButton }}
@@ -150,6 +153,8 @@ const EmployeeProfile = () => {
             Edit Profile
           </button>
         )}
+      <BackButton />  {/* Back Button Added */}
+
       </div>
     </div>
   );
