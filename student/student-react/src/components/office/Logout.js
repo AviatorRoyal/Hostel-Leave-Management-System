@@ -7,7 +7,7 @@ const Logout = () => {
     useEffect(() => {
         // Clear user session (if using local storage)
         localStorage.removeItem("user");
-        navigate("/profile");
+        navigate("/");
     }, [navigate]);
 
     return (
