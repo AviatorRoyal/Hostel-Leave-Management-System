@@ -16,12 +16,13 @@ const HostelDashboard = () => {
             display: "flex",
             flexDirection: "column",
             overflowX: "hidden",
+            boxSizing: "border-box",
         },
         header: {
             display: "flex",
             alignItems: "center",
             background: "#007BFF",
-            height: "100px",
+            height: "80px",
             width: "100%",
             color: "white",
             padding: "10px",
@@ -29,7 +30,7 @@ const HostelDashboard = () => {
             position: "relative",
         },
         toggleBtn: {
-            fontSize: "30px",
+            fontSize: "24px",
             cursor: "pointer",
             background: "none",
             border: "none",
@@ -38,7 +39,7 @@ const HostelDashboard = () => {
             left: "10px",
         },
         logo: {
-            height: "80px",
+            height: "60px",
             marginLeft: "10px",
         },
         sidebar: {
@@ -48,9 +49,10 @@ const HostelDashboard = () => {
             color: "white",
             position: "fixed",
             left: sidebarOpen ? "0" : "-250px",
-            top: "100px",
+            top: "80px",
             transition: "left 0.3s ease-in-out",
             paddingTop: "20px",
+            boxSizing: "border-box",
         },
         sidebarLink: {
             display: "block",
@@ -62,20 +64,25 @@ const HostelDashboard = () => {
             background: "#0056b3",
         },
         content: {
-            flex: 1,
             display: "flex",
+            flexWrap: "wrap",
             transition: "margin-left 0.3s ease-in-out",
             width: "100%",
             marginLeft: sidebarOpen ? "250px" : "0",
             padding: "20px",
             boxSizing: "border-box",
+            gap: "10px",
+            justifyContent: "center",
         },
         panel: {
-            padding: "20px",
-            flex: 1,
+            padding: "15px",
+            flex: "1 1 300px",  // Ensures responsiveness
             border: "1px solid #ccc",
             background: "#f4f4f4",
             margin: "10px",
+            minWidth: "280px",
+            maxWidth: "500px",
+            boxSizing: "border-box",
         },
         table: {
             width: "100%",
@@ -86,10 +93,12 @@ const HostelDashboard = () => {
             border: "1px solid black",
             padding: "10px",
             textAlign: "left",
+            fontSize: "8px",
         },
         th: {
             background: "#007BFF",
             color: "white",
+            fontSize: "8px",
         },
     };
 
@@ -135,14 +144,6 @@ const HostelDashboard = () => {
                                 <td style={styles.thTd}>2025-02-01</td>
                                 <td style={styles.thTd}><a href="#">View</a></td>
                             </tr>
-                            <tr>
-                                <td style={styles.thTd}>002</td>
-                                <td style={styles.thTd}>Personal</td>
-                                <td style={styles.thTd}>22BCE1002</td>
-                                <td style={styles.thTd}>Jane Smith</td>
-                                <td style={styles.thTd}>2025-01-25</td>
-                                <td style={styles.thTd}><a href="#">View</a></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -163,19 +164,11 @@ const HostelDashboard = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td style={styles.thTd}>003</td>
+                                <td style={styles.thTd}>002</td>
                                 <td style={styles.thTd}>Vacation</td>
-                                <td style={styles.thTd}>22BCE1003</td>
-                                <td style={styles.thTd}>Michael Lee</td>
-                                <td style={styles.thTd}>2025-01-28</td>
-                                <td style={styles.thTd}><a href="#">View</a></td>
-                            </tr>
-                            <tr>
-                                <td style={styles.thTd}>004</td>
-                                <td style={styles.thTd}>Medical</td>
-                                <td style={styles.thTd}>22BCE1004</td>
-                                <td style={styles.thTd}>Sarah Brown</td>
-                                <td style={styles.thTd}>2025-01-27</td>
+                                <td style={styles.thTd}>22BCE1002</td>
+                                <td style={styles.thTd}>Jane Smith</td>
+                                <td style={styles.thTd}>2025-01-25</td>
                                 <td style={styles.thTd}><a href="#">View</a></td>
                             </tr>
                         </tbody>
@@ -198,10 +191,10 @@ const HostelDashboard = () => {
                         </thead>
                         <tbody>
                             <tr>
-                                <td style={styles.thTd}>005</td>
+                                <td style={styles.thTd}>003</td>
                                 <td style={styles.thTd}>Personal</td>
-                                <td style={styles.thTd}>22BCE1005</td>
-                                <td style={styles.thTd}>Sarah Brown</td>
+                                <td style={styles.thTd}>22BCE1003</td>
+                                <td style={styles.thTd}>Michael Lee</td>
                                 <td style={styles.thTd}>2025-01-27</td>
                                 <td style={styles.thTd}><a href="#">View</a></td>
                             </tr>
