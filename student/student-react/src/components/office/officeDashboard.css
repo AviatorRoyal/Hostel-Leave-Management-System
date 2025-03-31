@@ -1,17 +1,21 @@
+/* Ensure no stretch on the body element */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  height: 55vh;
+  width:fit-content;
+  overflow: hidden; /* Prevent overflow */
 }
 
+/* Header styling */
 .header {
   display: flex;
   align-items: center;
   background: #007bff;
-  height: 150px;
+  height: 80px; /* Reduced height for better proportion */
   width: 100%;
   color: white;
   padding: 10px;
@@ -27,24 +31,33 @@ body {
   color: white;
   position: absolute;
   left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
 .logo {
-  height: 100px;
-  position: relative;
-  margin-right: 50%;
+  height: 60px;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+/* Sidebar styles */
 .sidebar {
   width: 250px;
   height: 100vh;
   background: #007bff;
   color: white;
   position: fixed;
-  left: -250px;
   top: 0;
-  transition: 0.3s;
+  left: -250px; /* Sidebar starts hidden offscreen */
+  transition: left 0.3s ease-in-out; /* Smooth transition */
   padding-top: 20px;
+  z-index: 10; /* Make sure sidebar is above content */
+}
+
+.sidebar.open {
+  left: 0; /* Slide in the sidebar */
 }
 
 .sidebar a {
@@ -58,12 +71,18 @@ body {
   background: #0056b3;
 }
 
+/* Main content area */
 .content {
   flex: 1;
   display: flex;
   margin-left: 0;
-  transition: margin-left 0.3s;
+  transition: margin-left 0.3s ease-in-out; /* Smooth shift */
+  padding: 20px;
   width: 100%;
+}
+
+.content.shifted {
+  margin-left: 250px; /* Shift content when sidebar is open */
 }
 
 .left,
@@ -73,6 +92,7 @@ body {
   flex: 1;
   border: 1px solid #ccc;
   background: #f4f4f4;
+  margin-right: 10px;
 }
 
 table {
@@ -83,11 +103,27 @@ table {
 table,
 th,
 td {
-  border: 1px solid black;
+  border: 1px solid #ccc;
 }
 
 th,
 td {
   padding: 10px;
   text-align: left;
+  word-wrap: break-word;
+}
+
+thead {
+  background-color: #f0f0f0;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .content.shifted {
+    margin-left: 200px;
+  }
 }

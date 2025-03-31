@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import './officeDashboard.css'; // Create a separate CSS file for styles
+import './officeDashboard.css'; // Assuming the CSS is in the same folder
 import vitLogo from '../../bin/vit_logo_colored.png';
 
 const OfficeDashboard = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
 
     const toggleNav = () => {
-        setSidebarOpen(!sidebarOpen);
+        setSidebarOpen(!sidebarOpen); // Toggle the sidebar state
     };
 
     return (
