@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; 
 
@@ -102,15 +103,25 @@ const HostelDashboard = () => {
             fontSize: "8px",
         },
     };
+=======
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Sidebar from "./Sidebar"; // Since it's in the same folder
+import Profile from "./Profile";
+import ManageStudents from "./ManageStudents";
+import ScanQR from "./ScanQR";
+import Logs from "./Logs";
+import Logout from "./Logout";
+>>>>>>> Stashed changes
 
+const OfficeDashboard = () => {
     return (
-        <div style={styles.body}>
-            {/* Header */}
-            <div style={styles.header}>
-                <button style={styles.toggleBtn} onClick={toggleSidebar}>☰</button>
-                <img src="./vit_logo_colored.png" alt="VITCC Logo" style={styles.logo} />
-            </div>
+        <Router>
+            <div style={{ display: "flex" }}>
+                {/* Sidebar for Navigation */}
+                <Sidebar />
 
+<<<<<<< Updated upstream
             {/* Sidebar */}
             <div style={styles.sidebar}>
                  <Link to="/officeProfile" style={styles.sidebarLink}>Profile</Link>
@@ -201,10 +212,21 @@ const HostelDashboard = () => {
                             </tr>
                         </tbody>
                     </table>
+=======
+                {/* Content Area */}
+                <div style={{ flex: 1, padding: "20px", marginLeft: "260px" }}>
+                    <Routes>
+                        <Route path="profile" element={<Profile />} />
+                        <Route path="manage-students" element={<ManageStudents />} />
+                        <Route path="scan-qr" element={<ScanQR />} />
+                        <Route path="logs" element={<Logs />} />
+                        <Route path="logout" element={<Logout />} />
+                    </Routes>
+>>>>>>> Stashed changes
                 </div>
             </div>
-        </div>
+        </Router>
     );
 };
 
-export default HostelDashboard;
+export default OfficeDashboard;
