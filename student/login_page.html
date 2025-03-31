@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(45deg, #007BFF, #6200b3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+        h2{
+            text-align: center;
+            color: #339;
+            
+        }
+        .login-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 500px;
+            border-radius: 20px;
+            
+            
+            
+        }
+        /* .loginform {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        } */
+
+        .login-container img {
+            margin-bottom: 20px;
+            width:100%;
+
+        }
+        .login-container h2 {
+            margin-bottom: 20px;
+           
+        }
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 95%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: inset 1px 1px 3px 2px rgba(0, 0, 0, 0.6), inset -1px -1px 3px 2px rgba(0, 0, 0, 0.6);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .login-container input[type="text"]:focus,
+        .login-container input[type="password"]:focus {
+            border-color: #293e55;
+            box-shadow: 0 0 0px rgba(0, 123, 255, 0.2);
+        }
+        .login-container input[type="submit"] {
+            width: 70%;
+            padding: 12px;
+            
+            border: none;
+            border-radius: 5px;
+            background: linear-gradient(45deg, #d400ff, #00b398);
+            color: white;
+            display: block;
+            margin: 10px auto;
+            
+            
+        }
+        .login-container input[type="submit"]:hover {
+            background: linear-gradient(45deg, #0056b3, #007BFF);
+        }
+        
+        
+        .captcha-text{
+            text-align: center;
+            margin:10px 0;
+            font-weight: bold;
+            color: #333;
+            background-color: #f2f2f2;
+            padding: 10px;
+
+        }
+        
+        .captcha-text button {
+            margin-left: 20px;;
+            padding: 5px 10px;
+            border: none;
+            background-color: #1388d1;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .captcha-text button:hover {
+            background-color: #410be3;
+        }
+
+        .login-container footer {
+            margin-top: 20px;
+            text-align: center;
+            color: #333;
+        }   
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="./bin/vit_logo_colored.png" alt="Logo" width="100">
+        <h2 >Student Login</h2>
+
+        <form id="loginForm" action="studentDashboard.html" method="post" onsubmit="return validateCaptcha();">
+            <label for="username">Registeration Number:</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <div class="captcha-text">          
+                <span id="captchaText"></span>
+                <button type="button" onclick="generateCaptcha()">Refresh</button>
+            </div>
+            
+            
+            <div class="captcha">
+                <label for="captcha">Captcha:&nbsp;</label>
+                <input type="text" id="captcha" name="captcha" size="15" required maxlength="6">
+                
+            </div>
+            
+            <input type="submit"  value="Login">
+        </form>
+        <footer>If You are   Hostel Supervisor, Please follow the below link<br><br>
+          <a href="../office/login.html">Hostel Login</a>  
+        </footer>
+    </div>
+
+    <script>
+
+        function generateCaptcha() {
+            // object for captcha generator holder
+            const captchaText = document.getElementById('captchaText');
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            let captcha = '';
+            for (let i = 0; i < 6; i++) {
+                captcha += characters.charAt(Math.floor(Math.random() * characters.length));
+            }
+            captchaText.textContent = captcha;
+        }
+
+
+        function validateCaptcha() {
+            
+            const captchaInput = document.getElementById('captcha').value;
+            
+            const captchaText = document.getElementById('captchaText').textContent;
+            if (captchaInput !== captchaText) {
+            alert('Captcha does not match. Please try again.');
+            generateCaptcha();
+            document.getElementById('captcha').value = '';
+            return false;
+            }
+            return true;
+        }
+
+        // Generate initial captcha
+        generateCaptcha();
+    </script>
+</body>
+</html>
