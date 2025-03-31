@@ -1,50 +1,67 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ManageLeaves = () => {
+    const [selectedTable, setSelectedTable] = useState("requests");
+    const [leaveRequests, setLeaveRequests] = useState([
+        { id: "001", type: "Medical", regNo: "22BCE1001", name: "John Doe", date: "2025-02-01", attachment: "#" },
+        { id: "002", type: "Vacation", regNo: "22BCE1002", name: "Jane Smith", date: "2025-01-25", attachment: "#" },
+        { id: "003", type: "Personal", regNo: "22BCE1003", name: "Michael Lee", date: "2025-01-27", attachment: "#" },
+        { id: "004", type: "Sick", regNo: "22BCE1004", name: "Alice Johnson", date: "2025-02-05", attachment: "#" },
+    ]);
+    
+    const [approvedLeaves, setApprovedLeaves] = useState([
+        { id: "005", type: "Vacation", regNo: "22BCE1005", name: "Tom Hardy", date: "2025-01-20", attachment: "#" },
+        { id: "006", type: "Sick", regNo: "22BCE1006", name: "Emma Brown", date: "2025-02-02", attachment: "#" },
+        { id: "007", type: "Medical", regNo: "22BCE1007", name: "Chris Green", date: "2025-01-30", attachment: "#" },
+        { id: "008", type: "Casual", regNo: "22BCE1008", name: "Liam White", date: "2025-02-08", attachment: "#" },
+    ]);
+
+    const [activeLeaves, setActiveLeaves] = useState([
+        { id: "009", type: "Personal", regNo: "22BCE1009", name: "Sophia Blue", date: "2025-01-29", attachment: "#" },
+        { id: "010", type: "Medical", regNo: "22BCE1010", name: "David Black", date: "2025-02-03", attachment: "#" },
+        { id: "011", type: "Sick", regNo: "22BCE1011", name: "Olivia Grey", date: "2025-02-06", attachment: "#" },
+        { id: "012", type: "Casual", regNo: "22BCE1012", name: "Ethan Red", date: "2025-02-10", attachment: "#" },
+    ]);
+
+    const handleApprove = (leave) => {
+        if (window.confirm(`Are you sure you want to approve leave request ${leave.id}?`)) {
+            setLeaveRequests(leaveRequests.filter(req => req.id !== leave.id));
+            setApprovedLeaves([...approvedLeaves, leave]);
+        }
+    };
+
     const styles = {
-        tableWrapper: {
-            display: "flex",
-            gap: "20px",  // Add space between tables
-            justifyContent: "space-between",
-            flexWrap: "wrap",
-            marginTop: "20px",
-        },
-        table: {
-            width: "48%",  // Make tables 48% width to fit side by side
-            borderCollapse: "collapse",
-            backgroundColor: "white",  // Set background to white
-            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",  // Add shadow for better visibility
-        },
-        thTd: {
-            border: "1px solid black",
-            padding: "10px",
-            textAlign: "left",
-            fontSize: "px",
-        },
-        th: {
-            background: "#007BFF",
-            color: "white",
-        },
-        section: {
-            marginBottom: "20px",
-            backgroundColor: "white",  // Background color for the section
-            padding: "20px",
-            borderRadius: "8px",
-            boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)",
-        },
-        heading: {
-            margin: "10px 0",
-        },
+        container: { backgroundColor: "white", padding: "20px", borderRadius: "8px", boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)", marginBottom: "20px" },
+        heading: { textAlign: "center", marginBottom: "20px" },
+        radioGroup: { display: "flex", justifyContent: "center", gap: "20px", marginBottom: "20px" },
+        tableContainer: { backgroundColor: "white", padding: "15px", borderRadius: "8px", boxShadow: "0 2px 10px rgba(0, 0, 0, 0.1)", width: "100%" },
+        table: { width: "100%", borderCollapse: "collapse" },
+        thTd: { border: "1px solid black", padding: "10px", textAlign: "left", fontSize: "12px" },
+        th: { background: "#007BFF", color: "white" },
+        button: { padding: "5px 10px", backgroundColor: "green", color: "white", border: "none", cursor: "pointer", borderRadius: "5px" }
     };
 
     return (
-        <div style={styles.section}>
+        <div style={styles.container}>
             <h2 style={styles.heading}>Manage Leaves</h2>
 
-            {/* Leave Tables Side by Side */}
-            <div style={styles.tableWrapper}>
-                {/* Leave Requests Table */}
-                <div style={styles.table}>
+            <div style={styles.radioGroup}>
+                <label>
+                    <input type="radio" name="tableSelect" value="requests" checked={selectedTable === "requests"} onChange={() => setSelectedTable("requests")} />
+                    Leave Requests
+                </label>
+                <label>
+                    <input type="radio" name="tableSelect" value="approved" checked={selectedTable === "approved"} onChange={() => setSelectedTable("approved")} />
+                    Approved Leaves
+                </label>
+                <label>
+                    <input type="radio" name="tableSelect" value="active" checked={selectedTable === "active"} onChange={() => setSelectedTable("active")} />
+                    Active Leaves
+                </label>
+            </div>
+
+            {selectedTable === "requests" && (
+                <div style={styles.tableContainer}>
                     <h3 style={styles.heading}>Leave Requests</h3>
                     <table style={styles.table}>
                         <thead>
@@ -55,23 +72,30 @@ const ManageLeaves = () => {
                                 <th style={styles.thTd}>Name</th>
                                 <th style={styles.thTd}>Date Uploaded</th>
                                 <th style={styles.thTd}>Attachments</th>
+                                <th style={styles.thTd}>Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style={styles.thTd}>001</td>
-                                <td style={styles.thTd}>Medical</td>
-                                <td style={styles.thTd}>22BCE1001</td>
-                                <td style={styles.thTd}>John Doe</td>
-                                <td style={styles.thTd}>2025-02-01</td>
-                                <td style={styles.thTd}><a href="#">View</a></td>
-                            </tr>
+                            {leaveRequests.map((leave) => (
+                                <tr key={leave.id}>
+                                    <td style={styles.thTd}>{leave.id}</td>
+                                    <td style={styles.thTd}>{leave.type}</td>
+                                    <td style={styles.thTd}>{leave.regNo}</td>
+                                    <td style={styles.thTd}>{leave.name}</td>
+                                    <td style={styles.thTd}>{leave.date}</td>
+                                    <td style={styles.thTd}><a href={leave.attachment}>View</a></td>
+                                    <td style={styles.thTd}>
+                                        <button style={styles.button} onClick={() => handleApprove(leave)}>Approve</button>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
+            )}
 
-                {/* Approved Leaves Table */}
-                <div style={styles.table}>
+            {selectedTable === "approved" && (
+                <div style={styles.tableContainer}>
                     <h3 style={styles.heading}>Approved Leaves</h3>
                     <table style={styles.table}>
                         <thead>
@@ -85,45 +109,50 @@ const ManageLeaves = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style={styles.thTd}>002</td>
-                                <td style={styles.thTd}>Vacation</td>
-                                <td style={styles.thTd}>22BCE1002</td>
-                                <td style={styles.thTd}>Jane Smith</td>
-                                <td style={styles.thTd}>2025-01-25</td>
-                                <td style={styles.thTd}><a href="#">View</a></td>
-                            </tr>
+                            {approvedLeaves.map((leave) => (
+                                <tr key={leave.id}>
+                                    <td style={styles.thTd}>{leave.id}</td>
+                                    <td style={styles.thTd}>{leave.type}</td>
+                                    <td style={styles.thTd}>{leave.regNo}</td>
+                                    <td style={styles.thTd}>{leave.name}</td>
+                                    <td style={styles.thTd}>{leave.date}</td>
+                                    <td style={styles.thTd}><a href={leave.attachment}>View</a></td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                 </div>
-            </div>
+            )}
 
-            {/* Active Leaves Table */}
-            <div>
-                <h3 style={styles.heading}>Active Leaves</h3>
-                <table style={styles.table}>
-                    <thead>
-                        <tr>
-                            <th style={styles.thTd}>Leave ID</th>
-                            <th style={styles.thTd}>Type</th>
-                            <th style={styles.thTd}>Registration No</th>
-                            <th style={styles.thTd}>Name</th>
-                            <th style={styles.thTd}>Date Uploaded</th>
-                            <th style={styles.thTd}>Attachments</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style={styles.thTd}>003</td>
-                            <td style={styles.thTd}>Personal</td>
-                            <td style={styles.thTd}>22BCE1003</td>
-                            <td style={styles.thTd}>Michael Lee</td>
-                            <td style={styles.thTd}>2025-01-27</td>
-                            <td style={styles.thTd}><a href="#">View</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            {selectedTable === "active" && (
+                <div style={styles.tableContainer}>
+                    <h3 style={styles.heading}>Active Leaves</h3>
+                    <table style={styles.table}>
+                        <thead>
+                            <tr>
+                                <th style={styles.thTd}>Leave ID</th>
+                                <th style={styles.thTd}>Type</th>
+                                <th style={styles.thTd}>Registration No</th>
+                                <th style={styles.thTd}>Name</th>
+                                <th style={styles.thTd}>Date Uploaded</th>
+                                <th style={styles.thTd}>Attachments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {activeLeaves.map((leave) => (
+                                <tr key={leave.id}>
+                                    <td style={styles.thTd}>{leave.id}</td>
+                                    <td style={styles.thTd}>{leave.type}</td>
+                                    <td style={styles.thTd}>{leave.regNo}</td>
+                                    <td style={styles.thTd}>{leave.name}</td>
+                                    <td style={styles.thTd}>{leave.date}</td>
+                                    <td style={styles.thTd}><a href={leave.attachment}>View</a></td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </div>
+            )}
         </div>
     );
 };

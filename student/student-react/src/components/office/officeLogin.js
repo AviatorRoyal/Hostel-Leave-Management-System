@@ -39,7 +39,7 @@ class OfficeLogin extends React.Component {
     }
 
     alert("Login successful!");
-    this.props.navigate("/office/*");
+    this.props.navigate("/office/");
   };
 
   // Generate captcha when the component is mounted

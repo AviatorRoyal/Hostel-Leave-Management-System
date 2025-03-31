@@ -59,7 +59,7 @@ const OfficeDashboard = () => {
             background: "#0056b3",
         },
         content: {
-            width:"100%",
+            width:"1100px",
             display: "flex",
             flexDirection: "column",
             gap: "10px",
