@@ -14,8 +14,8 @@ root.render(
     <Router>
       <Routes>
         <Route path="/" element={<LoginPage />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/student-dashboard" element={<StudentDashboard />} />
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
+        {/* <Route path="/student-dashboard" element={<StudentDashboard />} /> */}
       </Routes>
     </Router>
   </React.StrictMode>

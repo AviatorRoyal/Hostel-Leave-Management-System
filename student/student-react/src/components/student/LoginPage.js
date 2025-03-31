@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./LoginPage.module.css";
 import logo from "../../bin/vit_logo_colored.png";
+import { Link } from 'react-router-dom';
 
 class LoginPage extends React.Component {
   constructor(props) {
@@ -82,7 +83,8 @@ class LoginPage extends React.Component {
           If You are Hostel Supervisor, Please follow the below link
           <br />
           <br />
-          <a href="../office/login.html">Hostel Login</a>
+          {/* <a href="../office/login.html">Hostel Login</a> */}
+          <Link to="../officeLogin">Hostel Login</Link>
         </footer>
       </div>
     );
