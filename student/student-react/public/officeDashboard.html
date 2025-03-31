@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hostel Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            background: #007BFF;
+            height: 150px;
+            width: 200%;
+            color: white;
+            padding: 10px;
+            justify-content: center;
+            position: relative;
+        }
+
+        .toggle-btn {
+            font-size: 30px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+            position: absolute;
+            left: 10px;
+        }
+
+        .logo {
+            height: 100px;
+            position: relative;
+            margin-right: 50%;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #007BFF;
+            color: white;
+            position: fixed;
+            left: -250px;
+            top: 100px;
+            transition: 0.3s;
+            padding-top: 20px;
+        }
+        .sidebar a {
+            display: block;
+            padding: 15px;
+            color: white;
+            text-decoration: none;
+        }
+        .sidebar a:hover {
+            background: #0056b3;
+        }
+        .content {
+            flex: 1;
+            display: flex;
+            margin-left: 0;
+            transition: margin-left 0.3s;
+            width: 100%;
+        }
+        .left, .center, .right {
+            padding: 20px;
+            flex: 1;
+            border: 1px solid #ccc;
+            background: #f4f4f4;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+    <script>
+        function toggleNav() {
+            let sidebar = document.getElementById('sidebar');
+            let content = document.getElementById('content');
+            if (sidebar.style.left === '-250px') {
+                sidebar.style.left = '0';
+                content.style.marginLeft = '250px';
+            } else {
+                sidebar.style.left = '-250px';
+                content.style.marginLeft = '0';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="header">
+        <button class="toggle-btn" onclick="toggleNav()">☰</button>
+        <img src="./vit_logo_colored.png" alt="VITCC Logo" class="logo">
+    </div>
+    <div class="sidebar" id="sidebar">
+        <a href="#">Profile</a>
+        <a href="#">Manage Students</a>
+        <a href="#">Scan QR</a>
+        <a href="#">Logs</a>
+        <a href="./login.html">Logout</a>
+    </div>
+    <div class="content" id="content">
+        <div class="left">
+            <h2>Leave Requests</h2>
+            <table>
+                <tr><th>Student Name</th><th>Request Date</th><th>Status</th></tr>
+                <tr><td>John Doe</td><td>2025-02-01</td><td>Pending</td></tr>
+                <tr><th>Leave ID</th><th>Type</th><th>Registration No</th><th>Name</th><th>Date Uploaded</th><th>Attachments</th></tr>
+                <tr><td>001</td><td>Medical</td><td>22BCE1001</td><td>John Doe</td><td>2025-02-01</td><td><a href="#">View</a></td></tr>
+            </table>
+        </div>
+        <div class="center">
+            <h2>Approved Leaves</h2>
+            <table>
+                <tr><th>Student Name</th><th>Approval Date</th><th>Return Date</th></tr>
+                <tr><td>Jane Smith</td><td>2025-01-30</td><td>2025-02-05</td></tr>
+                <tr><th>Leave ID</th><th>Type</th><th>Registration No</th><th>Name</th><th>Date Uploaded</th><th>Attachments</th></tr>
+                <tr><td>002</td><td>Personal</td><td>22BCE1002</td><td>Jane Smith</td><td>2025-01-30</td><td><a href="#">View</a></td></tr>
+            </table>
+        </div>
+        <div class="right">
+            <h2>Active Leaves</h2>
+            <table>
+                <tr><th>Student Name</th><th>Leave Start</th><th>Expected Return</th></tr>
+                <tr><td>Michael Lee</td><td>2025-01-28</td><td>2025-02-03</td></tr>
+                <tr><th>Leave ID</th><th>Type</th><th>Registration No</th><th>Name</th><th>Date Uploaded</th><th>Attachments</th></tr>
+                <tr><td>003</td><td>Vacation</td><td>22BCE1003</td><td>Michael Lee</td><td>2025-01-28</td><td><a href="#">View</a></td></tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
