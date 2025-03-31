@@ -11,7 +11,7 @@ class OfficeLogin extends React.Component {
     this.captchaExpected = 0; // Captcha value stored as a class property
   }
 
-  // Function to generate a new captcha
+  // Function to generate a new 
   generateCaptcha = () => {
     const a = Math.floor(Math.random() * 10);
     const b = Math.floor(Math.random() * 10);
@@ -19,18 +19,27 @@ class OfficeLogin extends React.Component {
     document.getElementById("captcha-question").innerText = `${a} + ${b} = ?`;
   };
 
-  // Function to validate the captcha
+  // Validation
   validateCaptcha = (event) => {
     const answer = document.getElementById("captcha-answer").value;
     if (parseInt(answer, 10) !== this.captchaExpected) {
       event.preventDefault();
       alert("Captcha incorrect. Try again.");
-      this.generateCaptcha(); // Generate a new captcha
+      this.generateCaptcha(); // captcha generation
       return false;
-    } else {
-      alert("Login successful!");
-      this.props.navigate("/officeDashboard");
+    } 
+    
+    const employeeIdPattern = /^[1-9][0-9]{3}$/;
+    const passwordPattern = /^(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,}$/;
+    var password = document.getElementsByName("password")[0].value;
+    var empno = document.getElementsByName("empno")[0].value;
+    if (!empno.match(employeeIdPattern || !password.match(passwordPattern))) {
+      alert("Invalid Employee number or Password. Please try again.");
+      return false;
     }
+
+    alert("Login successful!");
+    this.props.navigate("/officeDashboard");
   };
 
   // Generate captcha when the component is mounted
