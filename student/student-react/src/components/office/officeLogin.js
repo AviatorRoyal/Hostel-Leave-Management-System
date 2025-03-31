@@ -1,7 +1,8 @@
 import React from "react";
-import "./officeLogin.css"; // Create a separate CSS file for styles
+import "./officeLogin.css"; // Ensure your CSS file includes the updated styles
 import logo from "../../bin/vit_logo_colored.png";
 import { useNavigate } from "react-router-dom";
+import { FiRefreshCcw } from "react-icons/fi"; // Import refresh icon
 
 class OfficeLogin extends React.Component {
   constructor(props) {
@@ -25,12 +26,9 @@ class OfficeLogin extends React.Component {
       alert("Captcha incorrect. Try again.");
       this.generateCaptcha(); // Generate a new captcha
       return false;
-    }
-    else{
-        alert("Login successful!");
-        // window.location.href = "/officeDashboard.html"; // Redirect to the dashboard
-        this.props.navigate("/officeDashboard");
-        
+    } else {
+      alert("Login successful!");
+      this.props.navigate("/officeDashboard");
     }
   };
 
@@ -49,9 +47,12 @@ class OfficeLogin extends React.Component {
             <input type="text" placeholder="Employee number" name="empno" required className="input-field" />
             <input type="password" placeholder="Password" name="password" required className="input-field" />
             <div className="captcha-container">
-              <p id="captcha-question" className="captcha-text"></p>
-              <input type="text" id="captcha-answer" placeholder="Enter answer" required className="input-field" />
+              <p id="captcha-question" className="captcha-text" style={{ display: "inline-block", marginRight: "10px" }}></p>
+              <button type="button" onClick={this.generateCaptcha} className="refresh-captcha" style={{ display: "inline-block", verticalAlign: "middle" }}>
+                <FiRefreshCcw size={20} />
+              </button>
             </div>
+            <input type="text" id="captcha-answer" placeholder="Enter answer" required className="input-field" />
             <input type="submit" value="Login" className="submit-button" />
           </form>
         </center>
@@ -62,9 +63,8 @@ class OfficeLogin extends React.Component {
 
 // Wrap the component with `useNavigate` to pass the `navigate` prop
 const OfficeLoginWithNavigate = (props) => {
-    const navigate = useNavigate();
-    return <OfficeLogin {...props} navigate={navigate} />;
-  };
-  
-  export default OfficeLoginWithNavigate;
-//export default OfficeLogin;
+  const navigate = useNavigate();
+  return <OfficeLogin {...props} navigate={navigate} />;
+};
+
+export default OfficeLoginWithNavigate;
