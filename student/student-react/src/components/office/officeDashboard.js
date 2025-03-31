@@ -18,7 +18,6 @@ const HostelDashboard = () => {
             overflowX: "hidden",
         },
         header: {
-            marginLeft: "-10px",
             display: "flex",
             alignItems: "center",
             background: "#007BFF",
@@ -119,16 +118,30 @@ const HostelDashboard = () => {
                     <table style={styles.table}>
                         <thead>
                             <tr>
-                                <th style={styles.thTd}>Student Name</th>
-                                <th style={styles.thTd}>Request Date</th>
-                                <th style={styles.thTd}>Status</th>
+                                <th style={styles.thTd}>Leave ID</th>
+                                <th style={styles.thTd}>Type</th>
+                                <th style={styles.thTd}>Registration No</th>
+                                <th style={styles.thTd}>Name</th>
+                                <th style={styles.thTd}>Date Uploaded</th>
+                                <th style={styles.thTd}>Attachments</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
+                                <td style={styles.thTd}>001</td>
+                                <td style={styles.thTd}>Medical</td>
+                                <td style={styles.thTd}>22BCE1001</td>
                                 <td style={styles.thTd}>John Doe</td>
                                 <td style={styles.thTd}>2025-02-01</td>
-                                <td style={styles.thTd}>Pending</td>
+                                <td style={styles.thTd}><a href="#">View</a></td>
+                            </tr>
+                            <tr>
+                                <td style={styles.thTd}>002</td>
+                                <td style={styles.thTd}>Personal</td>
+                                <td style={styles.thTd}>22BCE1002</td>
+                                <td style={styles.thTd}>Jane Smith</td>
+                                <td style={styles.thTd}>2025-01-25</td>
+                                <td style={styles.thTd}><a href="#">View</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -140,16 +153,30 @@ const HostelDashboard = () => {
                     <table style={styles.table}>
                         <thead>
                             <tr>
-                                <th style={styles.thTd}>Student Name</th>
-                                <th style={styles.thTd}>Approval Date</th>
-                                <th style={styles.thTd}>Return Date</th>
+                                <th style={styles.thTd}>Leave ID</th>
+                                <th style={styles.thTd}>Type</th>
+                                <th style={styles.thTd}>Registration No</th>
+                                <th style={styles.thTd}>Name</th>
+                                <th style={styles.thTd}>Date Uploaded</th>
+                                <th style={styles.thTd}>Attachments</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style={styles.thTd}>Jane Smith</td>
-                                <td style={styles.thTd}>2025-01-30</td>
-                                <td style={styles.thTd}>2025-02-05</td>
+                                <td style={styles.thTd}>003</td>
+                                <td style={styles.thTd}>Vacation</td>
+                                <td style={styles.thTd}>22BCE1003</td>
+                                <td style={styles.thTd}>Michael Lee</td>
+                                <td style={styles.thTd}>2025-01-28</td>
+                                <td style={styles.thTd}><a href="#">View</a></td>
+                            </tr>
+                            <tr>
+                                <td style={styles.thTd}>004</td>
+                                <td style={styles.thTd}>Medical</td>
+                                <td style={styles.thTd}>22BCE1004</td>
+                                <td style={styles.thTd}>Sarah Brown</td>
+                                <td style={styles.thTd}>2025-01-27</td>
+                                <td style={styles.thTd}><a href="#">View</a></td>
                             </tr>
                         </tbody>
                     </table>
@@ -161,16 +188,22 @@ const HostelDashboard = () => {
                     <table style={styles.table}>
                         <thead>
                             <tr>
-                                <th style={styles.thTd}>Student Name</th>
-                                <th style={styles.thTd}>Leave Start</th>
-                                <th style={styles.thTd}>Expected Return</th>
+                                <th style={styles.thTd}>Leave ID</th>
+                                <th style={styles.thTd}>Type</th>
+                                <th style={styles.thTd}>Registration No</th>
+                                <th style={styles.thTd}>Name</th>
+                                <th style={styles.thTd}>Date Uploaded</th>
+                                <th style={styles.thTd}>Attachments</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td style={styles.thTd}>Michael Lee</td>
-                                <td style={styles.thTd}>2025-01-28</td>
-                                <td style={styles.thTd}>2025-02-03</td>
+                                <td style={styles.thTd}>005</td>
+                                <td style={styles.thTd}>Personal</td>
+                                <td style={styles.thTd}>22BCE1005</td>
+                                <td style={styles.thTd}>Sarah Brown</td>
+                                <td style={styles.thTd}>2025-01-27</td>
+                                <td style={styles.thTd}><a href="#">View</a></td>
                             </tr>
                         </tbody>
                     </table>
