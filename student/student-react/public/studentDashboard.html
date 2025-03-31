@@ -27,7 +27,7 @@
                 height: 100px;
                 
                 
-                display: block;
+                display:block ;
                 margin: 0 auto 20px;
         }
         figure{
@@ -47,8 +47,8 @@
 
         nav ul {
             list-style: none;
-            margin: 0;
-            padding: 0;
+            /* margin: 111110;
+            padding: 111110; */
             display: flex;
             
         }
@@ -92,7 +92,7 @@
             background-color: white;
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
             justify-content: space-between;
             background: linear-gradient(45deg, #007BFF, #6200b3);
         }
@@ -113,7 +113,7 @@
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
-            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+            /* box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); */
         }
         .hidden{
             display:none;
@@ -121,7 +121,7 @@
 
         
         button{
-            background: rgba(21, 222, 27, 0.733);
+            background: rgba(21, 222, 27, 0.8);
             color: white;
             border: none;
             border-radius: 5px;
@@ -220,6 +220,9 @@
                         &nbsp;<label for="endTime">End Time:</label>&nbsp;&nbsp;
                         <input type="time" id="endTime" required>
                         <br><br>
+                        <label for="document">Attach Supporting Document (if any):</label><br></br>
+                        <input type="file" id="document" accept=".pdf,.doc,.docx,.jpg,.png">
+                        <br><br>
                       
                         <button type="submit">APPLY</button>
                       
@@ -229,6 +232,8 @@
             function submitLeaveForm(event) {
                 event.preventDefault();
                 let leaveType = document.getElementById('LeaveType').value;
+
+                let documentFile = document.getElementById('document').files[0];
                 
                 const submissionDate = new Date().toLocaleString();
 
@@ -237,6 +242,7 @@
                 newRow.innerHTML = `
                     <p><strong>Leave Type:</strong> ${leaveType}</p>
                     <p><strong>Submission Date & Time:</strong> ${submissionDate}</p>
+                    <p><strong>Attached Document:</strong> ${documentFile ? documentFile.name : "No document attached"}</p>
                     <hr>
                 `;
                 statusTable.appendChild(newRow);
@@ -244,11 +250,19 @@
                 // Clear the form
                 document.getElementById('applyForm').reset();
             }
+
+
+
+
             function submitMessage(){
                 alert("Leave Application Submitted Successfully");
                 
                 
             }
+
+
+
+
             function showNightTeamOption(){
                 let leaveType = document.getElementById('LeaveType').value;
                 if(leaveType === "Night Pass"){
@@ -258,6 +272,8 @@
                     document.querySelector('.hidden').style.display = 'none';
                 }    
             }
+
+
 
             function showStatusTable(){
                 const statusTable = document.getElementById('statusTable');
