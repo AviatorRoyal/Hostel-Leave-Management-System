@@ -33,7 +33,7 @@ class LoginPage extends React.Component {
 
     // Navigate to the student dashboard
     alert("Login successful!");
-    window.location.href = "studentDashboard.html";
+    window.location.href = "/studentDashboard.html";
   };
 
   // Generate captcha when the component is mounted
