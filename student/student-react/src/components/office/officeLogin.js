@@ -3,6 +3,7 @@ import "./officeLogin.css"; // Ensure your CSS file includes the updated styles
 import logo from "../../bin/vit_logo_colored.png";
 import { useNavigate } from "react-router-dom";
 import { FiRefreshCcw } from "react-icons/fi"; // Import refresh icon
+import {Link} from 'react-router-dom'; // Import Link for navigation
 
 class OfficeLogin extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class OfficeLogin extends React.Component {
     this.captchaExpected = 0; // Captcha value stored as a class property
   }
 
-  // Function to generate a new captcha
+  // Function to generate a new 
   generateCaptcha = () => {
     const a = Math.floor(Math.random() * 10);
     const b = Math.floor(Math.random() * 10);
@@ -18,18 +19,27 @@ class OfficeLogin extends React.Component {
     document.getElementById("captcha-question").innerText = `${a} + ${b} = ?`;
   };
 
-  // Function to validate the captcha
+  // Validation
   validateCaptcha = (event) => {
     const answer = document.getElementById("captcha-answer").value;
     if (parseInt(answer, 10) !== this.captchaExpected) {
       event.preventDefault();
       alert("Captcha incorrect. Try again.");
-      this.generateCaptcha(); // Generate a new captcha
+      this.generateCaptcha(); // captcha generation
       return false;
-    } else {
-      alert("Login successful!");
-      this.props.navigate("/officeDashboard");
+    } 
+    
+    const employeeIdPattern = /^[1-9][0-9]{3}$/;
+    const passwordPattern = /^(?=.*[!@#$%^&*(),.?":{}|<>])[a-zA-Z0-9!@#$%^&*(),.?":{}|<>]{8,}$/;
+    var password = document.getElementsByName("password")[0].value;
+    var empno = document.getElementsByName("empno")[0].value;
+    if (!empno.match(employeeIdPattern || !password.match(passwordPattern))) {
+      alert("Invalid Employee number or Password. Please try again.");
+      return false;
     }
+
+    alert("Login successful!");
+    this.props.navigate("/officeDashboard");
   };
 
   // Generate captcha when the component is mounted
@@ -55,6 +65,13 @@ class OfficeLogin extends React.Component {
             <input type="text" id="captcha-answer" placeholder="Enter answer" required className="input-field" />
             <input type="submit" value="Login" className="submit-button" />
           </form>
+          <footer className="footer">
+          If You are Student, Please follow the below link
+          <br />
+          <br />
+          {/* <a href="../office/login.html">Hostel Login</a> */}
+          <Link to="/student/LoginPage">Student Login</Link>
+          </footer>
         </center>
       </div>
     );
