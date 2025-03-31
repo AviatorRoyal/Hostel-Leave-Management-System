@@ -7,6 +7,7 @@ import LoginPage from "./components/student/LoginPage";
 import OfficeLogin from "./components/office/officeLogin";
 import OfficeDashboard from "./components/office/officeDashboard";
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import StudentDashboard from './components/student/studentDashboard';
 import StudentLogin from './components/student/LoginPage';
 import OfficeProfile from './components/office/officeProfile';
@@ -31,6 +32,13 @@ import StudentDashboard from "./components/student/studentDashboard";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
+=======
+import StudentDashboard from "./components/student/studentDashboard";
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+
+root.render(
+>>>>>>> Stashed changes
   <Router>
     <Routes>
       <Route path="/" element={<LoginPage />} />
@@ -39,6 +47,9 @@ root.render(
       <Route path="/student-dashboard/*" element={<StudentDashboard />} />
     </Routes>
   </Router>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 );
 

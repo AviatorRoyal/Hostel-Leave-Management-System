@@ -1,4 +1,5 @@
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 import React, { useState } from "react";
 import { Link } from "react-router-dom"; 
 
@@ -104,6 +105,8 @@ const HostelDashboard = () => {
         },
     };
 =======
+=======
+>>>>>>> Stashed changes
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Sidebar from "./Sidebar"; // Since it's in the same folder
@@ -112,6 +115,9 @@ import ManageStudents from "./ManageStudents";
 import ScanQR from "./ScanQR";
 import Logs from "./Logs";
 import Logout from "./Logout";
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 
 const OfficeDashboard = () => {
@@ -121,6 +127,7 @@ const OfficeDashboard = () => {
                 {/* Sidebar for Navigation */}
                 <Sidebar />
 
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
             {/* Sidebar */}
             <div style={styles.sidebar}>
@@ -213,6 +220,8 @@ const OfficeDashboard = () => {
                         </tbody>
                     </table>
 =======
+=======
+>>>>>>> Stashed changes
                 {/* Content Area */}
                 <div style={{ flex: 1, padding: "20px", marginLeft: "260px" }}>
                     <Routes>
@@ -222,6 +231,9 @@ const OfficeDashboard = () => {
                         <Route path="logs" element={<Logs />} />
                         <Route path="logout" element={<Logout />} />
                     </Routes>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                 </div>
             </div>
