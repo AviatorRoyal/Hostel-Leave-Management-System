@@ -1,18 +1,15 @@
 import React, { useState } from "react";
-import { Routes, Route, Link } from "react-router-dom";
-import Sidebar from "./Sidebar"; // Ensure Sidebar exists
+import { Routes, Route } from "react-router-dom";
+import Sidebar from "./Sidebar";
 import Profile from "./Profile";
 import ManageStudents from "./ManageStudents";
 import ScanQR from "./ScanQR";
 import Logs from "./Logs";
 import Logout from "./Logout";
+import ManageLeaves from "./ManageLeaves"; // Import ManageLeaves component
 
 const OfficeDashboard = () => {
-    const [sidebarOpen, setSidebarOpen] = useState(false);
-
-    const toggleSidebar = () => {
-        setSidebarOpen(!sidebarOpen);
-    };
+    const [sidebarOpen, setSidebarOpen] = useState(true);
 
     const styles = {
         body: {
@@ -36,30 +33,21 @@ const OfficeDashboard = () => {
             justifyContent: "center",
             position: "relative",
         },
-        toggleBtn: {
-            fontSize: "24px",
-            cursor: "pointer",
-            background: "none",
-            border: "none",
-            color: "white",
-            position: "absolute",
-            left: "10px",
-        },
         logo: {
             height: "60px",
             marginLeft: "10px",
         },
         sidebar: {
-            width: "250px",
+            width: sidebarOpen ? "250px" : "0", // Toggle width based on sidebar state
             height: "100vh",
             background: "#007BFF",
             color: "white",
             position: "fixed",
-            left: sidebarOpen ? "0" : "-250px",
+            left: "0",
             top: "80px",
-            transition: "left 0.3s ease-in-out",
             paddingTop: "20px",
             boxSizing: "border-box",
+            transition: "width 0.3s",
         },
         sidebarLink: {
             display: "block",
@@ -72,39 +60,14 @@ const OfficeDashboard = () => {
         },
         content: {
             display: "flex",
-            flexWrap: "wrap",
-            transition: "margin-left 0.3s ease-in-out",
-            width: "100%",
-            marginLeft: sidebarOpen ? "250px" : "0",
-            padding: "20px",
-            boxSizing: "border-box",
+            flexDirection: "column",
             gap: "10px",
             justifyContent: "center",
-        },
-        panel: {
-            padding: "15px",
-            flex: "1 1 300px",  // Ensures responsiveness
-            border: "1px solid #ccc",
-            background: "#f4f4f4",
-            margin: "10px",
-            minWidth: "280px",
-            maxWidth: "500px",
-            boxSizing: "border-box",
-        },
-        table: {
-            width: "100%",
-            borderCollapse: "collapse",
-            marginTop: "8px",
-        },
-        thTd: {
-            border: "1px solid black",
-            padding: "10px",
-            textAlign: "left",
-            fontSize: "8px",
-        },
-        th: {
-            background: "#007BFF",
-            color: "white",
+            flex: 1,
+            padding: "20px",
+            marginLeft: sidebarOpen ? "250px" : "0",  // Adjust content margin based on sidebar state
+            transition: "margin-left 0.3s",
+            backgroundColor: "#F4F4F4",  // Set background color for the content area
         },
     };
 
@@ -112,111 +75,24 @@ const OfficeDashboard = () => {
         <div style={styles.body}>
             {/* Header */}
             <div style={styles.header}>
-                <button style={styles.toggleBtn} onClick={toggleSidebar}>☰</button>
                 <img src="/vit_logo_colored.png" alt="VITCC Logo" style={styles.logo} />
             </div>
 
             {/* Sidebar */}
             <div style={styles.sidebar}>
-                <Link to="/office/profile" style={styles.sidebarLink}>Profile</Link>
-                <Link to="/office/manage-students" style={styles.sidebarLink}>Manage Students</Link>
-                <Link to="/office/scan-qr" style={styles.sidebarLink}>Scan QR</Link>
-                <Link to="/office/logs" style={styles.sidebarLink}>Logs</Link>
-                <Link to="/office/logout" style={styles.sidebarLink}>Logout</Link>
+                <Sidebar />
             </div>
 
             {/* Main Content */}
             <div style={styles.content}>
-                {/* Left Panel */}
-                <div style={styles.panel}>
-                    <h2>Leave Requests</h2>
-                    <table style={styles.table}>
-                        <thead>
-                            <tr>
-                                <th style={styles.thTd}>Leave ID</th>
-                                <th style={styles.thTd}>Type</th>
-                                <th style={styles.thTd}>Registration No</th>
-                                <th style={styles.thTd}>Name</th>
-                                <th style={styles.thTd}>Date Uploaded</th>
-                                <th style={styles.thTd}>Attachments</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style={styles.thTd}>001</td>
-                                <td style={styles.thTd}>Medical</td>
-                                <td style={styles.thTd}>22BCE1001</td>
-                                <td style={styles.thTd}>John Doe</td>
-                                <td style={styles.thTd}>2025-02-01</td>
-                                <td style={styles.thTd}><a href="#">View</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                {/* Center Panel */}
-                <div style={styles.panel}>
-                    <h2>Approved Leaves</h2>
-                    <table style={styles.table}>
-                        <thead>
-                            <tr>
-                                <th style={styles.thTd}>Leave ID</th>
-                                <th style={styles.thTd}>Type</th>
-                                <th style={styles.thTd}>Registration No</th>
-                                <th style={styles.thTd}>Name</th>
-                                <th style={styles.thTd}>Date Uploaded</th>
-                                <th style={styles.thTd}>Attachments</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style={styles.thTd}>002</td>
-                                <td style={styles.thTd}>Vacation</td>
-                                <td style={styles.thTd}>22BCE1002</td>
-                                <td style={styles.thTd}>Jane Smith</td>
-                                <td style={styles.thTd}>2025-01-25</td>
-                                <td style={styles.thTd}><a href="#">View</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                {/* Right Panel */}
-                <div style={styles.panel}>
-                    <h2>Active Leaves</h2>
-                    <table style={styles.table}>
-                        <thead>
-                            <tr>
-                                <th style={styles.thTd}>Leave ID</th>
-                                <th style={styles.thTd}>Type</th>
-                                <th style={styles.thTd}>Registration No</th>
-                                <th style={styles.thTd}>Name</th>
-                                <th style={styles.thTd}>Date Uploaded</th>
-                                <th style={styles.thTd}>Attachments</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td style={styles.thTd}>003</td>
-                                <td style={styles.thTd}>Personal</td>
-                                <td style={styles.thTd}>22BCE1003</td>
-                                <td style={styles.thTd}>Michael Lee</td>
-                                <td style={styles.thTd}>2025-01-27</td>
-                                <td style={styles.thTd}><a href="#">View</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            {/* Routes */}
-            <div style={{ flex: 1, padding: "20px", marginLeft: "260px" }}>
                 <Routes>
                     <Route path="profile" element={<Profile />} />
                     <Route path="manage-students" element={<ManageStudents />} />
                     <Route path="scan-qr" element={<ScanQR />} />
                     <Route path="logs" element={<Logs />} />
                     <Route path="logout" element={<Logout />} />
+                    {/* Set the default route for leaves */}
+                    <Route path="/" element={<ManageLeaves />} />
                 </Routes>
             </div>
         </div>
