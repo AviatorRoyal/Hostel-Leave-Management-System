@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom"; 
 
 const HostelDashboard = () => {
     const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -112,7 +113,7 @@ const HostelDashboard = () => {
 
             {/* Sidebar */}
             <div style={styles.sidebar}>
-                <a href="#" style={styles.sidebarLink}>Profile</a>
+                 <Link to="/officeProfile" style={styles.sidebarLink}>Profile</Link>
                 <a href="#" style={styles.sidebarLink}>Manage Students</a>
                 <a href="#" style={styles.sidebarLink}>Scan QR</a>
                 <a href="#" style={styles.sidebarLink}>Logs</a>
